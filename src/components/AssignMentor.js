@@ -18,8 +18,15 @@ function AssignMentor(flag,setFlag) {
 
   let handleSave = async ()=>{
     try {
+      let data = {}
+      for (const x of mentors) {
+        if(x.id == selectedValueMent)
+        {
+          data=x
+        }
+      }
       let res = await axios.put(`${'https://649f374c245f077f3e9d6f05.mockapi.io/mentors'}/${selectedValueMent}`,{
-        studentsName
+        studentsName:[selectedValueStud,...data?.studentsName]
       })
       if(res.status===200)
       navigate('/dashboard')
@@ -61,27 +68,29 @@ function AssignMentor(flag,setFlag) {
             <h1 className="h1 mb-0 text-gray-800">Assign Mentor to Students</h1>
         </div>
 
-      <h1>Students List</h1>
-        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueStud(event.target.value)} defaultValue={selectedValueStud}>
-      <option >Open this select menu</option>
-      {
-        students.map((e,i)=>{
-            return <option value={e.studentsName} key={i}>
-              {e.studentsName}
-            </option>
-          })
-      }
-    </Form.Select>
-    
-    <br></br>
-
-    <h1>Mentors List</h1>
+        <h1>Mentors List</h1>
         <Form.Select aria-label="Default select example" onChange={event => setSelectedValueMent(event.target.value)} defaultValue={selectedValueMent}>
       <option >Open this select menu</option>
       {
         mentors.map((e,i)=>{
             return <option value={e.id} key={i}>
               {e.mentorsName}
+            </option>
+          })
+      }
+    </Form.Select>
+    
+    <div className="d-sm-flex align-items-center justify-content-center mt-4">
+            <h1 className="h1 mb-0 text-gray-800">To</h1>
+        </div>
+   
+    <h1>Students List</h1>
+        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueStud(event.target.value)} defaultValue={selectedValueStud}>
+      <option >Open this select menu</option>
+      {
+        students.map((e,i)=>{
+            return <option value={e.studentsName} key={i}>
+              {e.studentsName}
             </option>
           })
       }

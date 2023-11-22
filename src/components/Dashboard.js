@@ -88,7 +88,7 @@ function mentorsFunc() {
           <th>Mentors Email</th>
           <th>Mentors Mobile</th>
           <th>Mentors City</th>
-          <th>Assigned Students</th>
+          <th style={{textAlign: "center"}}>Assigned Students</th>
           <th style={{textAlign: "center"}}>Actions</th>
         </tr>
       </thead>
@@ -101,14 +101,20 @@ function mentorsFunc() {
             <td>{e.mentorsEmail}</td>
             <td>{e.mentorsMobile}</td>
             <td>{e.mentorsCity}</td>
-            <td>{e.studentsName}</td>
+            <td style={{display: "flex",justifyContent: "center",flexDirection:"column"}}>{e.studentsName.map((a)=>{
+              return <div class="form-check form-check-reverse" style={{display: "flex",justifyContent: "center",flexDirection: "row-reverse"}}>
+                        <div><input class="form-check-input" type="checkbox" value={a} id="reverseCheck1" style={{cursor:"pointer"}}></input></div>&nbsp;&nbsp;
+                        <div><label class="form-check-label" for="reverseCheck1">{a}</label></div>
+                    </div>
+            })}</td>
             <td style={{textAlign: "center", fontSize : "1.5rem"}}>
 
             <div>
-                <i class="fa-solid fa-user-group" onClick={()=>{navigate(`/assign-mentor`)}}></i>&nbsp;
-                <i class="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i>&nbsp;
-                <i class="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i>&nbsp;
-                <i class="fa-solid fa-user" style={{color: "#4e73df"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i>
+                <span title='Assign User' style={{cursor:"pointer"}}><i class="fa-solid fa-user-plus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;
+                <span title='Edit User' style={{cursor:"pointer"}}><i class="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i></span>&nbsp;
+                <span title='User Profile' style={{cursor:"pointer"}}><i class="fa-solid fa-user" style={{color: "#4e73df"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i></span>&nbsp;
+                <span title='Delete User' style={{cursor:"pointer"}}><i class="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i></span>&nbsp;
+                <span title='Unassign User' style={{cursor:"pointer"}}><i class="fa-solid fa-user-minus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;
             </div>
 
               </td>
