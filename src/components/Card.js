@@ -3,7 +3,7 @@ import React from "react";
 function Card({ title, value, color, icon, isProgress }) {
 	return (
 		<>
-			<div className="col-xl-3 col-md-6 mb-4">
+			<div className="col-xl-3 col-md-6 mb-4" style={{width:"20%"}}>
 				<div className={`card border-left-${color} shadow h-100 py-2`}>
 					<div className="card-body">
 						<div className="row no-gutters align-items-center">
@@ -44,7 +44,7 @@ function Card({ title, value, color, icon, isProgress }) {
 								)}
 							</div>
 							<div className="col-auto">
-								<i className={`fas ${icon} fa-2x text-gray-500`}></i>
+								<i className={`fas ${icon} text-${color} fa-2x`}></i>
 							</div>
 						</div>
 					</div>

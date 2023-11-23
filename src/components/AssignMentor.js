@@ -4,11 +4,11 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 
-function AssignMentor(flag,setFlag) {
+function AssignMentor() {
 
     let navigate = useNavigate()
 
-    let [studentsName,setStudentsName] = useState()
+    // let [studentsName,setStudentsName] = useState()
 
     let [students,setStudents] = useState([])
     let [mentors,setMentors] = useState([])
@@ -20,7 +20,7 @@ function AssignMentor(flag,setFlag) {
     try {
       let data = {}
       for (const x of mentors) {
-        if(x.id == selectedValueMent)
+        if(x.id === selectedValueMent)
         {
           data=x
         }

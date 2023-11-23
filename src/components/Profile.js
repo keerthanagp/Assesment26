@@ -78,7 +78,7 @@ function Profile({flag,setFlag}) {
     return <>
     <div className="d-sm-flex align-items-center justify-content-between mb-4 mt-2">
     <h1 className="h1 mb-0 text-gray-800">Student Profile Section</h1>
-    <i class="fa-solid fa-user-pen" style={{color: "#4e73df",fontSize:"2.5rem"}} onClick={()=>{navigate(`/edit-profile/${params.id}`)}}></i>
+    <i className="fa-solid fa-user-pen" style={{color: "#4e73df",fontSize:"2.5rem"}} onClick={()=>{navigate(`/edit-profile/${params.id}`)}}></i>
  </div>
 
     <div style={{display:"flex", flexDirection:"row-reverse", justifyContent:"center", alignItems:"center"}}>
@@ -132,7 +132,7 @@ function Profile({flag,setFlag}) {
     return<>
     <div className="d-sm-flex align-items-center justify-content-between mb-4 mt-2">
     <h1 className="h1 mb-0 text-gray-800">Mentor Profile Section</h1>
-    <i class="fa-solid fa-user-pen" style={{color: "#4e73df",fontSize:"2.5rem"}} onClick={()=>{navigate(`/edit-profile/${params.id}`)}}></i>
+    <i className="fa-solid fa-user-pen" style={{color: "#4e73df",fontSize:"2.5rem"}} onClick={()=>{navigate(`/edit-profile/${params.id}`)}}></i>
  </div>
     
     <div style={{display:"flex", flexDirection:"row-reverse", justifyContent:"center", alignItems:"center"}}>

@@ -14,6 +14,9 @@ function Dashboard({flag,setFlag}) {
   let [students,setStudents] = useState([])
   let [mentors,setMentors] = useState([])
 
+  let [unassignStud,setUnassignStud] = useState([])
+  let [unassignStudId,setUnassignStudId] = useState()
+
   const handleChange = (event) => {
     setFlag(JSON.parse(event.target.value));
   };
@@ -56,9 +59,9 @@ function studentsFunc() {
             <td style={{textAlign: "center", fontSize : "1.5rem"}}>
 
             <div>
-                <i class="fa-solid fa-user" style={{color: "#4e73df"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i>&nbsp;
-                <i class="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i>&nbsp;
-                <i class="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i>
+                <i className="fa-solid fa-user" style={{color: "#f6c23e"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i>&nbsp;
+                <i className="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i>&nbsp;
+                <i className="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i>
             </div>
 
               </td>
@@ -78,6 +81,27 @@ function mentorsFunc() {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  let handleSave = async ()=>{
+    try {
+      // console.log(unassignStud,unassignStudId)
+      let data = {}
+      for (const x of mentors) {
+        if(x.id === unassignStudId)
+        {
+          data=x
+        }
+      }
+      let res = await axios.put(`${'https://649f374c245f077f3e9d6f05.mockapi.io/mentors'}/${unassignStudId}`,{
+        studentsName:[]
+      })
+      getMentors()
+      
+    } catch (error) {
+      console.log(error)
+    }
+  
   }
 
   return <Table striped bordered hover>
@@ -102,19 +126,48 @@ function mentorsFunc() {
             <td>{e.mentorsMobile}</td>
             <td>{e.mentorsCity}</td>
             <td style={{display: "flex",justifyContent: "center",flexDirection:"column"}}>{e.studentsName.map((a)=>{
-              return <div class="form-check form-check-reverse" style={{display: "flex",justifyContent: "center",flexDirection: "row-reverse"}}>
-                        <div><input class="form-check-input" type="checkbox" value={a} id="reverseCheck1" style={{cursor:"pointer"}}></input></div>&nbsp;&nbsp;
-                        <div><label class="form-check-label" for="reverseCheck1">{a}</label></div>
-                    </div>
+              return (
+								<div
+									className="form-check form-check-reverse"
+									style={{
+										display: "flex",
+										justifyContent: "center",
+										flexDirection: "row-reverse",
+									}}
+								>
+									<div>
+										<input
+											className="form-check-input"
+											type="checkbox"
+											id="reverseCheck1"
+											style={{ cursor: "pointer" }}
+
+											onChange={(event) => {
+                        setUnassignStud(event.target.value)
+                        setUnassignStudId(e.id)
+                        // console.log(unassignStud)
+                      }}
+											defaultValue={a}
+										></input>
+									</div>
+									&nbsp;&nbsp;
+									<div>
+										<label className="form-check-label" htmlFor="reverseCheck1">
+											{a}
+										</label>
+									</div>
+								</div>
+							);
+                    
             })}</td>
             <td style={{textAlign: "center", fontSize : "1.5rem"}}>
 
             <div>
-                <span title='Assign User' style={{cursor:"pointer"}}><i class="fa-solid fa-user-plus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;
-                <span title='Edit User' style={{cursor:"pointer"}}><i class="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i></span>&nbsp;
-                <span title='User Profile' style={{cursor:"pointer"}}><i class="fa-solid fa-user" style={{color: "#4e73df"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i></span>&nbsp;
-                <span title='Delete User' style={{cursor:"pointer"}}><i class="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i></span>&nbsp;
-                <span title='Unassign User' style={{cursor:"pointer"}}><i class="fa-solid fa-user-minus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;
+                <span title='Assign User' style={{cursor:"pointer",color: "#4e73df"}}><i className="fa-solid fa-user-plus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;&nbsp;
+                <span title='Edit User' style={{cursor:"pointer",color: "#1cc88a"}}><i className="fa-solid fa-pen-to-square" onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i></span>&nbsp;&nbsp;
+                <span title='User Profile' style={{cursor:"pointer",color: "#f6c23e"}}><i className="fa-solid fa-user" onClick={()=>{navigate(`/profile/${e.id}`)}}></i></span>&nbsp;&nbsp;
+                <span title='Delete User' style={{cursor:"pointer",color: "#e74a3b"}}><i className="fa-solid fa-trash" onClick={()=>handleDelete(e.id)}></i></span>&nbsp;&nbsp;
+                <span title='Unassign User' style={{cursor:"pointer",color: "#36b9cc"}}><i className="fa-solid fa-user-minus" onClick={handleSave}></i></span>
             </div>
 
               </td>

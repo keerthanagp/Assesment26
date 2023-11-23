@@ -3,31 +3,38 @@ export const DashboardContext = React.createContext()
 function DashboardContextComponent({children}) {
     let data = [
         {
-          title:"Earnings (Monthly)",
-          value:"$40,000",
+          title:"ACTION",
+          value:"Assign User",
           color:"primary",
-          icon:"fa-calendar",
+          icon:"fa-user-plus",
           isProgress:false
         },
         {
-          title:"Earnings (Annual)",
-          value:"$160,000",
+          title:"ACTION",
+          value:"Edit User",
           color:"success",
-          icon:"fa-dollar-sign",
+          icon:"fa-pen-to-square",
           isProgress:false
         },
         {
-          title:"Task",
-          value:"100%",
-          color:"info",
-          icon:"fa-clipboard-list",
-          isProgress:true
+          title:"ACTION",
+          value:"User Profile",
+          color:"warning",
+          icon:"fa-user",
+          isProgress:false
         },
         {
-          title:"Pending Request",
-          value:"18",
-          color:"warning",
-          icon:"fa-comments",
+          title:"ACTION",
+          value:"Delete User",
+          color:"danger",
+          icon:"fa-trash",
+          isProgress:false
+        },
+        {
+          title:"ACTION",
+          value:"Unassign User",
+          color:"info",
+          icon:"fa-user-minus",
           isProgress:false
         }
       ]
