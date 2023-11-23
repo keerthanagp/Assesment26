@@ -8,7 +8,7 @@ function EditProfile({flag,setFlag}) {
 
   let params = useParams()
 
-  // let [studentsPic,setStudentsPic] = useState()
+  let [studentsPic,setStudentsPic] = useState()
   let [studentsName,setStudentsName] = useState()
   let [studentsEmail,setStudentsEmail] = useState()
   let [studentsMobile,setStudentsMobile] = useState()
@@ -16,7 +16,7 @@ function EditProfile({flag,setFlag}) {
   let [studentsFullAddress,setStudentsFullAddress] = useState()
   let [studentsPincode,setStudentsPincode] = useState()
   let [studentsBatch,setStudentsBatch] = useState()
-  // let [mentorsPic,setMentorsPic] = useState()
+  let [mentorsPic,setMentorsPic] = useState()
   let [mentorsName,setMentorsName] = useState()
   let [mentorsEmail,setMentorsEmail] = useState()
   let [mentorsMobile,setMentorsMobile] = useState()
@@ -35,6 +35,7 @@ function EditProfile({flag,setFlag}) {
       console.log(params.id)
       
       if(res.status===200){
+        setStudentsPic(res.data.studentsPic)
         setStudentsName(res.data.studentsName)
         setStudentsEmail(res.data.studentsEmail)
         setStudentsMobile(res.data.studentsMobile)
@@ -54,6 +55,7 @@ function EditProfile({flag,setFlag}) {
       let res = await axios.get(`${'https://649f374c245f077f3e9d6f05.mockapi.io/mentors'}/${params.id}`)
       
       if(res.status===200){
+        setMentorsPic(res.data.mentorsPic)
         setMentorsName(res.data.mentorsName)
         setMentorsEmail(res.data.mentorsEmail)
         setMentorsMobile(res.data.mentorsMobile)
@@ -89,6 +91,7 @@ function EditProfile({flag,setFlag}) {
             params.id
           }`,
           {
+            studentsPic,
             studentsName,
             studentsEmail,
             studentsMobile,
@@ -145,6 +148,11 @@ function EditProfile({flag,setFlag}) {
         <Form.Label>Batch</Form.Label>
         <Form.Control type="text" placeholder="Enter Batch" value={studentsBatch} onChange={(e)=>setStudentsBatch(e.target.value)}/>
       </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control type="text" placeholder="Enter Image URL" value={studentsPic} onChange={(e)=>setStudentsPic(e.target.value)}/>
+      </Form.Group>
      
       <Button variant="primary" onClick={()=>handleSave()}>
         Submit
@@ -162,6 +170,7 @@ function EditProfile({flag,setFlag}) {
             params.id
           }`,
           {
+            mentorsPic,
             mentorsName,
             mentorsEmail,
             mentorsCity,
@@ -215,6 +224,11 @@ function EditProfile({flag,setFlag}) {
       <Form.Group className="mb-3">
         <Form.Label>Edit Assigned Student</Form.Label>
         <Form.Control type="text" placeholder="Enter Student Name" value={studentsName} onChange={(e)=>setStudentsName(e.target.value)}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control type="text" placeholder="Enter Image URL" value={mentorsPic} onChange={(e)=>setMentorsPic(e.target.value)}/>
       </Form.Group>
      
       <Button variant="primary" onClick={()=>handleSave()}>

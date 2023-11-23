@@ -7,7 +7,7 @@ function Profile({flag,setFlag}) {
 
   let params = useParams()
   
-  // let [studentsPic,setStudentsPic] = useState()
+  let [studentsPic,setStudentsPic] = useState()
   let [studentsName,setStudentsName] = useState()
   let [studentsEmail,setStudentsEmail] = useState()
   let [studentsMobile,setStudentsMobile] = useState()
@@ -15,7 +15,7 @@ function Profile({flag,setFlag}) {
   let [studentsFullAddress,setStudentsFullAddress] = useState()
   let [studentsPincode,setStudentsPincode] = useState()
   let [studentsBatch,setStudentsBatch] = useState()
-  // let [mentorsPic,setMentorsPic] = useState()
+  let [mentorsPic,setMentorsPic] = useState()
   let [mentorsName,setMentorsName] = useState()
   let [mentorsEmail,setMentorsEmail] = useState()
   let [mentorsMobile,setMentorsMobile] = useState()
@@ -30,6 +30,7 @@ function Profile({flag,setFlag}) {
     try {
       let res = await axios.get(`${'https://649f374c245f077f3e9d6f05.mockapi.io/students'}/${params.id}`)
       if(res.status===200){
+        setStudentsPic(res.data.studentsPic)
         setStudentsName(res.data.studentsName)
         setStudentsEmail(res.data.studentsEmail)
         setStudentsMobile(res.data.studentsMobile)
@@ -48,6 +49,7 @@ function Profile({flag,setFlag}) {
     try {
       let res = await axios.get(`${'https://649f374c245f077f3e9d6f05.mockapi.io/mentors'}/${params.id}`)
       if(res.status===200){
+        setMentorsPic(res.data.mentorsPic)
         setMentorsName(res.data.mentorsName)
         setMentorsEmail(res.data.mentorsEmail)
         setMentorsMobile(res.data.mentorsMobile)
@@ -83,7 +85,7 @@ function Profile({flag,setFlag}) {
 
     <div style={{display:"flex", flexDirection:"row-reverse", justifyContent:"center", alignItems:"center"}}>
 
- {/* <img src={studentsPic} style={{height:"475px", width:"400px", marginLeft:"50px"}} alt='dp'></img> */}
+ <img src={studentsPic} style={{height:"425px", width:"350px", marginLeft:"50px"}} alt='dp'></img>
 
  <Form style={{width:"60%"}}>
  <Form.Group className="mb-3">
@@ -120,6 +122,11 @@ function Profile({flag,setFlag}) {
      <Form.Label>Batch</Form.Label>
      <Form.Control type="text" placeholder="Enter Batch" value={studentsBatch} readOnly/>
    </Form.Group>
+
+   <Form.Group className="mb-3">
+     <Form.Label>Image URL</Form.Label>
+     <Form.Control type="text" placeholder="Enter Image URL" value={studentsPic} readOnly/>
+   </Form.Group>
   
  </Form>
 
@@ -137,7 +144,7 @@ function Profile({flag,setFlag}) {
     
     <div style={{display:"flex", flexDirection:"row-reverse", justifyContent:"center", alignItems:"center"}}>
 
- {/* <img src={studentsPic} style={{height:"475px", width:"400px", marginLeft:"50px"}} alt='dp'></img> */}
+ <img src={mentorsPic} style={{height:"425px", width:"350px", marginLeft:"50px"}} alt='dp'></img>
 
  <Form style={{width:"60%"}}>
  <Form.Group className="mb-3">
@@ -173,6 +180,11 @@ function Profile({flag,setFlag}) {
       <Form.Group className="mb-3">
      <Form.Label>Assigned Student</Form.Label>
      <Form.Control type="text" placeholder="Enter Name" value={studentsName} readOnly/>
+   </Form.Group>
+
+      <Form.Group className="mb-3">
+     <Form.Label>Image URL</Form.Label>
+     <Form.Control type="text" placeholder="Enter Image URL" value={mentorsPic} readOnly/>
    </Form.Group>
   
  </Form>
