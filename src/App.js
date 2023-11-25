@@ -30,7 +30,7 @@ function App() {
               <Route path='/edit-user/:id' element={<EditUser flag={flag} setFlag={setFlag}/>} />
               <Route path='/profile/:id' element={<Profile flag={flag} setFlag={setFlag}/>} />
               <Route path='/edit-profile/:id' element={<EditProfile flag={flag} setFlag={setFlag}/>} />
-              <Route path='/assign-mentor' element={<AssignMentor flag={flag} setFlag={setFlag}/>} />
+              <Route path='/assign-mentor/:id' element={<AssignMentor flag={flag} setFlag={setFlag}/>} />
               
               <Route path="*" element={<Navigate to="/dashboard" />}></Route>
             </Routes>

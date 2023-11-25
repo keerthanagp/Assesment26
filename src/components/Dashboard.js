@@ -59,9 +59,9 @@ function studentsFunc() {
             <td style={{textAlign: "center", fontSize : "1.5rem"}}>
 
             <div>
-                <i className="fa-solid fa-user" style={{color: "#f6c23e"}} onClick={()=>{navigate(`/profile/${e.id}`)}}></i>&nbsp;
-                <i className="fa-solid fa-pen-to-square" style={{color: "#00cc3d"}} onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i>&nbsp;
-                <i className="fa-solid fa-trash" style={{color: "#e74a3b",}} onClick={()=>handleDelete(e.id)}></i>
+                <span title='User Profile' style={{ cursor: "pointer", color: "#f6c23e" }}><i className="fa-solid fa-user" onClick={() => { navigate(`/profile/${e.id}`) }}></i></span>&nbsp;&nbsp;
+                <span title='Edit User' style={{ cursor: "pointer", color: "#1cc88a" }}><i className="fa-solid fa-pen-to-square" onClick={() => { navigate(`/edit-user/${e.id}`) }}></i></span>&nbsp;&nbsp;
+                <span title='Delete User' style={{ cursor: "pointer", color: "#e74a3b" }}><i className="fa-solid fa-trash" onClick={() => handleDelete(e.id)}></i></span>
             </div>
 
               </td>
@@ -163,7 +163,7 @@ function mentorsFunc() {
             <td style={{textAlign: "center", fontSize : "1.5rem"}}>
 
             <div>
-                <span title='Assign User' style={{cursor:"pointer",color: "#4e73df"}}><i className="fa-solid fa-user-plus" onClick={()=>{navigate(`/assign-mentor`)}}></i></span>&nbsp;&nbsp;
+                <span title='Assign User' style={{cursor:"pointer",color: "#4e73df"}}><i className="fa-solid fa-user-plus" onClick={()=>{navigate(`/assign-mentor/${e.id}`)}}></i></span>&nbsp;&nbsp;
                 <span title='Edit User' style={{cursor:"pointer",color: "#1cc88a"}}><i className="fa-solid fa-pen-to-square" onClick={()=>{navigate(`/edit-user/${e.id}`)}}></i></span>&nbsp;&nbsp;
                 <span title='User Profile' style={{cursor:"pointer",color: "#f6c23e"}}><i className="fa-solid fa-user" onClick={()=>{navigate(`/profile/${e.id}`)}}></i></span>&nbsp;&nbsp;
                 <span title='Delete User' style={{cursor:"pointer",color: "#e74a3b"}}><i className="fa-solid fa-trash" onClick={()=>handleDelete(e.id)}></i></span>&nbsp;&nbsp;

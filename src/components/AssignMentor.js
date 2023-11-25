@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 
 function AssignMentor() {
 
     let navigate = useNavigate()
+    const params = useParams()
+    console.log(params)
 
     // let [studentsName,setStudentsName] = useState()
 
@@ -15,6 +17,16 @@ function AssignMentor() {
 
     const [selectedValueStud, setSelectedValueStud] = useState();
     const [selectedValueMent, setSelectedValueMent] = useState();
+
+    useEffect(()=>{
+// for (const x of mentors) {
+//   if (x.id===params.id)
+//   {
+//     setSelectedValueMent(x.mentorsName)
+//   }
+// }
+setSelectedValueMent(params.id)
+    },[params])
 
   let handleSave = async ()=>{
     try {
@@ -69,7 +81,7 @@ function AssignMentor() {
         </div>
 
         <h1>Mentors List</h1>
-        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueMent(event.target.value)} defaultValue={selectedValueMent}>
+        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueMent(event.target.value)} value={selectedValueMent}>
       <option >Open this select menu</option>
       {
         mentors.map((e,i)=>{
@@ -85,7 +97,7 @@ function AssignMentor() {
         </div>
    
     <h1>Students List</h1>
-        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueStud(event.target.value)} defaultValue={selectedValueStud}>
+        <Form.Select aria-label="Default select example" onChange={event => setSelectedValueStud(event.target.value)} Value={selectedValueStud}>
       <option >Open this select menu</option>
       {
         students.map((e,i)=>{
