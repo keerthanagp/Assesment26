@@ -32,7 +32,7 @@ function App() {
               <Route path='/edit-profile/:id' element={<EditProfile flag={flag} setFlag={setFlag}/>} />
               <Route path='/assign-mentor/:id' element={<AssignMentor flag={flag} setFlag={setFlag}/>} />
               
-              <Route path="*" element={<Navigate to="/dashboard" />}></Route>
+              <Route path="/*" element={<Navigate to="/dashboard" />}></Route>
             </Routes>
 
           </div>
