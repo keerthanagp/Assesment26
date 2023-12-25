@@ -85,7 +85,7 @@ function mentorsFunc() {
 
   let handleSave = async ()=>{
     try {
-      // console.log(unassignStud,unassignStudId)
+      
       let data = {}
       for (const x of mentors) {
         if(x.id === unassignStudId)
@@ -145,7 +145,7 @@ function mentorsFunc() {
 											onChange={(event) => {
                         setUnassignStud(event.target.value)
                         setUnassignStudId(e.id)
-                        // console.log(unassignStud)
+                       
                       }}
 											defaultValue={a}
 										></input>
@@ -180,9 +180,7 @@ function mentorsFunc() {
 
 let getStudents = async ()=> {
   try {
-    // fetch(`${'https://649f374c245f077f3e9d6f05.mockapi.io/students'}`)
-    // .then(res=>res.json())
-    // .then(data=>setStudents(data))
+
 
     let res = await axios.get(`${'https://649f374c245f077f3e9d6f05.mockapi.io/students'}`)
     setStudents(res.data)

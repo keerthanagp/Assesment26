@@ -238,9 +238,6 @@ function EditProfile({flag,setFlag}) {
     </>
   }
 
-//1. Without dependency array useEffect(()=>{}) --> triggers every time when a state changes
-//2. With Empty Dependency array useEffect(()=>{},[]) --> triggers only for the first time of component rendering
-//3. With Dependency Array useEffect(()=>{},[name,email]) ->> triggers only when name or email changes
 
   return <div className='container'>
         {flag?mentorsEditProfile():studentsEditProfile()}

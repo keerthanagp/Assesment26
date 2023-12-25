@@ -10,7 +10,7 @@ function AssignMentor() {
     const params = useParams()
     console.log(params)
 
-    // let [studentsName,setStudentsName] = useState()
+    
 
     let [students,setStudents] = useState([])
     let [mentors,setMentors] = useState([])
@@ -19,12 +19,7 @@ function AssignMentor() {
     const [selectedValueMent, setSelectedValueMent] = useState();
 
     useEffect(()=>{
-// for (const x of mentors) {
-//   if (x.id===params.id)
-//   {
-//     setSelectedValueMent(x.mentorsName)
-//   }
-// }
+
 setSelectedValueMent(params.id)
     },[params])
 
